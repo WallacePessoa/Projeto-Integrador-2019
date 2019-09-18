@@ -9,10 +9,13 @@ public class Iluminacao : MonoBehaviour
     public GameObject Player;
     public GameObject Predio;
     public List<Light> Lampadas = new List<Light>();
+    public List<GameObject> Objetos = new List<GameObject>();
     public bool atv = false;
 
     Material Mt;
     Color Cor;
+
+    int rnd;
 
 
 
@@ -69,7 +72,7 @@ public class Iluminacao : MonoBehaviour
 
         if (atv)
         {
-            print(tranparente);
+            //print(tranparente);
 
         }
 
@@ -82,6 +85,30 @@ public class Iluminacao : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            rnd = Random.Range(1, 15);
+            if (rnd < 14)
+            {
+                for (int x = 0; x < Objetos.Count; x++)
+                {
+                    Objetos[x].gameObject.SetActive(false);
+                }
+            }
+            else {
+
+                for (int x = 0; x < Objetos.Count; x++)
+                {
+                    Objetos[x].gameObject.SetActive(true);
+                }
+
+
+            }
+
+            if (atv)
+            {
+                print(rnd);
+
+            }
+
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 375f);
         }
     }
