@@ -2016,7 +2016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c569c917a854c488f3a3c53f5d3311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocity: 30
+  Velocity: 20
 --- !u!54 &912936681
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2046,8 +2046,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene: {fileID: 1172319692}
-  posIni: {fileID: 0}
-  Camera: {fileID: 0}
+  posIni: {fileID: 241990520}
+  Camera: {fileID: 912936677}
 --- !u!1 &924593205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2984,6 +2984,7 @@ GameObject:
   - component: {fileID: 1704562960}
   - component: {fileID: 1704562959}
   - component: {fileID: 1704562962}
+  - component: {fileID: 1704562963}
   m_Layer: 5
   m_Name: btnStart
   m_TagString: Untagged
@@ -3118,6 +3119,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeOut: {fileID: 244408708}
+--- !u!95 &1704562963
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704562957}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 03a43a0ed2525cc46b9aeaad0b37874f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1716600498
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3461,7 +3481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133d2f637e9e5e4429058127390481a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeOut: {fileID: 244408708}
+  fadeOut: {fileID: 0}
 --- !u!114 &1815798234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3933,6 +3953,7 @@ GameObject:
   - component: {fileID: 2053708296}
   - component: {fileID: 2053708295}
   - component: {fileID: 2053708298}
+  - component: {fileID: 2053708299}
   m_Layer: 5
   m_Name: btnLevels
   m_TagString: Untagged
@@ -4067,6 +4088,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeOut: {fileID: 244408708}
+--- !u!95 &2053708299
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053708293}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 03a43a0ed2525cc46b9aeaad0b37874f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2097784235
 GameObject:
   m_ObjectHideFlags: 0
