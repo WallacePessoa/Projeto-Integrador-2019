@@ -8,6 +8,9 @@ TagManager:
   - Trap
   - Parede
   - Coletavel
+  - Destroy
+  - Enemi
+  - Dead
   layers:
   - Default
   - TransparentFX
