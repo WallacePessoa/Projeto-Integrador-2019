@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectsMusic : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class ObjectsMusic : MonoBehaviour
     public float DistanciaObject;
     public float DistanciaObject2;
     public float StartMusicTime;
+
+    public Text StarMusicText;
 
     int qSamples = 16384;
     int aux = 0;
@@ -75,6 +78,7 @@ public class ObjectsMusic : MonoBehaviour
 
     void Start()
     {
+        StarMusicText.text = StartMusicTime.ToString();
 
         rotação = Quaternion.Euler(new Vector3(-90, 0, 0));
 
@@ -95,7 +99,7 @@ public class ObjectsMusic : MonoBehaviour
         {
             valores[x] = 0.01f;
         }
-
+        StartCoroutine(IniciarMusica());
     }
 
     public IEnumerator GetVolume()
@@ -223,9 +227,21 @@ public class ObjectsMusic : MonoBehaviour
 
 
 
-    void iniciarmusica()
+    public IEnumerator IniciarMusica()
     {
-        AudioMusic.Play();
+
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(GetVolume());
+        starTime = true;
+        AudioScript.Play();
+        StartMusicTime--;
+        StarMusicText.text = StartMusicTime.ToString();
+        if(StartMusicTime == 0)
+        {
+            AudioMusic.Play();
+            StarMusicText.enabled = !StarMusicText.enabled;
+        }else
+            StartCoroutine(IniciarMusica());
     }
 
 
@@ -265,16 +281,7 @@ public class ObjectsMusic : MonoBehaviour
         //    instantiateEnemi = false;
         //}
 
-
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-
-            StartCoroutine(GetVolume());
-            starTime = true;
-            AudioScript.Play();
-            Invoke("iniciarmusica", StartMusicTime);
-        }
+        
 
         #region Start Time
         if (starTime)
@@ -373,14 +380,14 @@ public class ObjectsMusic : MonoBehaviour
         }
         else
         {
-            if (Rnd == 0)
-                Obstaculo = Instantiate(Destruir, new Vector3(-10, 3, transform.position.z + DistanciaObject2), rotação);
+            //if (Rnd == 0)
+            //    Obstaculo = Instantiate(Destruir, new Vector3(-10, 3, transform.position.z + DistanciaObject2), rotação);
 
-            if (Rnd == 1)
-                Obstaculo = Instantiate(Destruir, new Vector3(-5, 3, transform.position.z + DistanciaObject2), rotação);
+            //if (Rnd == 1)
+            //    Obstaculo = Instantiate(Destruir, new Vector3(-5, 3, transform.position.z + DistanciaObject2), rotação);
 
-            if (Rnd == 2)
-                Obstaculo = Instantiate(Destruir, new Vector3(0, 3, transform.position.z + DistanciaObject2), rotação);
+            //if (Rnd == 2)
+            //    Obstaculo = Instantiate(Destruir, new Vector3(0, 3, transform.position.z + DistanciaObject2), rotação);
 
             if (Rnd == 0)
                 Obstaculo = Instantiate(Parede, new Vector3(-10, transform.position.y, transform.position.z + DistanciaObject2), transform.rotation);
