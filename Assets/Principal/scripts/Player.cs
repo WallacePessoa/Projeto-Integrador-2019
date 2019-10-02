@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     Rigidbody rb;
+
+    
 
     AudioSource Audio;
 
@@ -21,6 +24,7 @@ public class Player : MonoBehaviour
     public float speed;
     public Text Score;
     int score = 0;
+    int Life = 2;
 
     //public float Velocity = 5;
 
@@ -102,8 +106,15 @@ public class Player : MonoBehaviour
             Score.text = score.ToString();
             Destroy(other.gameObject);
         }
+        if (other.CompareTag("Dead"))
+        {
+            Life--;
+            if(Life == 0)
+            {
+                SceneManager.LoadScene("Menu1");
+            }
 
-
+        }
     }
 
 
