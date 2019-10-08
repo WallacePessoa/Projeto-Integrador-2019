@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ObjectsMusic : MonoBehaviour
 {
@@ -247,6 +248,11 @@ public class ObjectsMusic : MonoBehaviour
 
     void Update()
     {
+        if(AudioMusic.time >= 122f)
+        {
+            SceneManager.LoadScene("Menu1");
+        }
+
         if (InstaciarObjeto && Input.GetKey(KeyCode.I))
         {
 
@@ -316,7 +322,7 @@ public class ObjectsMusic : MonoBehaviour
 
                 TimeBeatStart += Time.deltaTime;
 
-                if (TimeBeatStart > TimeBeat && TimeBeat > 0.5)
+                if (TimeBeatStart > TimeBeat && TimeBeat > 1)
                 {
                     aux++;
                     InstaciarObjeto = true;
@@ -333,7 +339,7 @@ public class ObjectsMusic : MonoBehaviour
             }
 
             TimeColet += Time.deltaTime;
-            if (TimeColet > 0.05)
+            if (TimeColet > 0.5)
             {
                 TimeColet = 0;
                 instantiateColet = true;

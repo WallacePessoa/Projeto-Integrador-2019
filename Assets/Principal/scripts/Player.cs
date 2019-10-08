@@ -23,8 +23,10 @@ public class Player : MonoBehaviour
     public float Jump;
     public float speed;
     public Text Score;
+    public Image[] vida;
+    public Rank rank;
     int score = 0;
-    int Life = 2;
+    int Life = 3;
 
     //public float Velocity = 5;
 
@@ -105,12 +107,25 @@ public class Player : MonoBehaviour
             score += 1;
             Score.text = score.ToString();
             Destroy(other.gameObject);
+
         }
         if (other.CompareTag("Dead"))
         {
             Life--;
-            if(Life == 0)
+
+            for(int x = 0; x < vida.Length; x++)
             {
+                if (vida[x].enabled == true)
+                {
+                    vida[x].enabled = !vida[x].enabled;
+                    break;
+                }
+            }
+
+
+            if (Life == 0)
+            {
+                rank.AddRank(score);
                 SceneManager.LoadScene("Menu1");
             }
 
