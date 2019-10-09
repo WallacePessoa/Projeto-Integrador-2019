@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
 
 
 
+
   
 
 
@@ -125,7 +126,7 @@ public class Player : MonoBehaviour
 
             if (Life == 0)
             {
-                rank.AddRank(score);
+                //rank.AddRank(score);
                 SceneManager.LoadScene("Menu1");
             }
 
