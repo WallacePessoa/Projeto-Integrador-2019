@@ -7,9 +7,6 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     Rigidbody rb;
-
-    
-
     AudioSource Audio;
 
     Vector3 PosicaoVertcalAlvo;
@@ -17,16 +14,26 @@ public class Player : MonoBehaviour
 
     bool atv = true;
 
-    int LaneAtual = 5;
-    int LaneAlvo;
+    int LaneAtual = -5;
+    int LaneAlvo = -5;
 
     public float Jump;
     public float speed;
     public Text Score;
+    public Text Text;
     public Image[] vida;
+    public Image Fade;
+    public InputField Nome;
+    public Button Salvar;
+
     public Rank rank;
+    public Running running;
+
+
     int score = 0;
     int Life = 3;
+
+    List<string> Nomes = new List<string>();
 
     //public float Velocity = 5;
 
@@ -50,40 +57,36 @@ public class Player : MonoBehaviour
         PosicaoVertcalAlvo.x = -5;
         Score.text = score.ToString();
 
+        StartCoroutine(Muv());
     }
+
+
+    public IEnumerator Muv()
+    {
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            atv = true;
+            MudarLane(true);
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            atv = true;
+            MudarLane(false);
+        }
+
+
+        yield return null;
+        StartCoroutine(Muv());
+    }
+
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        #region muv
-
-        //transform.LookAt(TargetFinish.transform.position);
-
-        //rb.velocity = transform.forward * Velocity;
-
-        if (Input.GetKeyDown(KeyCode.D) && atv == false){
-            atv = true;
-            MudarLane(5);
-        }
-        if(Input.GetKeyUp(KeyCode.D))
-            atv = false;
-
-        if (Input.GetKeyDown(KeyCode.A) && atv == false)
-        {
-            atv = true;
-            MudarLane(-5);
-        }
-        if (Input.GetKeyUp(KeyCode.A))
-            atv = false;
-
         posicaoAlvo = new Vector3(PosicaoVertcalAlvo.x, transform.position.y, transform.position.z);
         transform.position = posicaoAlvo;
-        //transform.position = Vector3.MoveTowards(transform.position, posicaoAlvo, speed);
-
-        #endregion
-
-
-
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -91,14 +94,13 @@ public class Player : MonoBehaviour
            
         }
 
-
-
         //if (Input.GetKeyDown(KeyCode.P))
         //{
 
         //    Instantiate(Parede, transform.position, transform.rotation);
         //}
 
+        PosicaoVertcalAlvo = new Vector3(LaneAtual, 0, 0);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -126,24 +128,49 @@ public class Player : MonoBehaviour
 
             if (Life == 0)
             {
-                //rank.AddRank(score);
-                SceneManager.LoadScene("Menu1");
+                StartCoroutine(FadeDead());
+                Fade.gameObject.SetActive(true);
+                running.Velocity = 0;
             }
 
         }
     }
 
-
-    void MudarLane(int Lane)
+    public IEnumerator FadeDead()
     {
+        yield return new WaitForSeconds(2f);
+        Nome.gameObject.SetActive(true);
+        Salvar.gameObject.SetActive(true);
+        Text.gameObject.SetActive(true);
+    }
 
-        LaneAlvo = LaneAtual + Lane;
-        if (LaneAlvo < -6 || LaneAlvo > 6)
-            return;
+    public void Gravar()
+    {
+        rank.Nomes.Add(Nome.text);
+        rank.AddRank(score);
+        SceneManager.LoadScene("Menu1");
+    }
+
+
+    void MudarLane(bool Lane)
+    {
+        switch (LaneAtual)
+        {
+            case -5:
+                if (Lane)
+                    LaneAlvo += 5;
+                if (!Lane)
+                    LaneAlvo -= 5;
+                break;
+            case 0:
+                if (!Lane)
+                    LaneAlvo -= 5;
+                break;
+            case -10:
+                if (Lane)
+                    LaneAlvo += 5;
+                break;
+        }
         LaneAtual = LaneAlvo;
-
-        //print(LaneAlvo);
-
-        PosicaoVertcalAlvo = new Vector3(( LaneAtual - 5 ) , 0, 0);
     }
 }
