@@ -12,12 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: New Rank
   m_EditorClassIdentifier: Assembly-CSharp::Rank
-  Ranking: 0d0000000900000008000000030000000100000000000000
-  Nomes:
-  - abcdefg
-  - wacacw
-  - wiliam
-  - wallace
-  - bbb
-  - aaaa
-  ListAux: 0d0000000900000008000000030000000100000000000000
+  Ranking: 
+  Nomes: []
+  ListAux: 
