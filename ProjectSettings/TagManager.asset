@@ -11,6 +11,8 @@ TagManager:
   - Destroy
   - Enemi
   - Dead
+  - FX
+  - Music
   layers:
   - Default
   - TransparentFX
