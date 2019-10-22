@@ -8,9 +8,12 @@ public class Player : MonoBehaviour
 {
     Rigidbody rb;
     AudioSource Audio;
+    Animator AnimTextScore;
 
     Vector3 PosicaoVertcalAlvo;
     Vector3 posicaoAlvo;
+
+    RectTransform Rect;
 
     bool atv = true;
 
@@ -42,17 +45,12 @@ public class Player : MonoBehaviour
     //public GameObject Parede;
 
 
-
-
-  
-
-
-
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         Audio = GetComponent<AudioSource>();
+        AnimTextScore = Score.GetComponent<Animator>();
+        AnimTextScore.enabled = !AnimTextScore.enabled;
 
         PosicaoVertcalAlvo.x = -5;
         Score.text = score.ToString();
@@ -94,24 +92,12 @@ public class Player : MonoBehaviour
            
         }
 
-        //if (Input.GetKeyDown(KeyCode.P))
-        //{
-
-        //    Instantiate(Parede, transform.position, transform.rotation);
-        //}
-
         PosicaoVertcalAlvo = new Vector3(LaneAtual, 0, 0);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private IEnumerator OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Coletavel"))
-        {
-            score += 1;
-            Score.text = score.ToString();
-            Destroy(other.gameObject);
 
-        }
         if (other.CompareTag("Dead"))
         {
             Life--;
@@ -133,6 +119,25 @@ public class Player : MonoBehaviour
                 running.Velocity = 0;
             }
 
+        }
+        if (other.CompareTag("Coletavel"))
+        {
+            Rect = Score.GetComponent<RectTransform>();
+            Rect.localScale.Set(1, 1, 1);
+            score += 1;
+            Score.text = score.ToString();
+            Destroy(other.gameObject);
+            if (!AnimTextScore.enabled)
+            {
+                AnimTextScore.enabled = !AnimTextScore.enabled;
+ 
+                yield return new WaitForSeconds(0.3f);
+
+                AnimTextScore.enabled = !AnimTextScore.enabled;
+
+                Rect.localScale.Set(1, 1, 1);
+
+            }
         }
     }
 
@@ -158,7 +163,11 @@ public class Player : MonoBehaviour
         {
             case -5:
                 if (Lane)
+                {
                     LaneAlvo += 5;
+                    //if(transform.position)
+                    //rb.velocity = transform.right * Velocity;
+                }
                 if (!Lane)
                     LaneAlvo -= 5;
                 break;
