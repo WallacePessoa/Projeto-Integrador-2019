@@ -39,8 +39,9 @@ public class ObjectsMusic : MonoBehaviour
     int aux = 0;
     int Rnd;
     int Rnd2;
+    public static float timeAudio;
 
-    float[] DbValue;
+    public static float[] DbValue;
     float[] SampleScript;
     float[] SampleMusic;
 
@@ -68,7 +69,7 @@ public class ObjectsMusic : MonoBehaviour
 
     public AudioSource AudioScript;
 
-    public AudioSource AudioMusic;
+    AudioSource AudioMusic;
 
     Animator animator;
 
@@ -84,6 +85,9 @@ public class ObjectsMusic : MonoBehaviour
         rotação = Quaternion.Euler(new Vector3(-90, 0, 0));
 
         animator = GetComponent<Animator>();
+        AudioMusic = GetComponent<AudioSource>();
+
+
         SampleScript = new float[qSamples];
         SampleMusic = new float[qSamples];
 
@@ -202,7 +206,7 @@ public class ObjectsMusic : MonoBehaviour
                         {
 
                             TimeBeat = times[2] - times[1];
-                            print(TimeBeat);
+                            //print(TimeBeat);
 
                         }
                     }
@@ -221,7 +225,7 @@ public class ObjectsMusic : MonoBehaviour
 
             }
         }
-
+        timeAudio = AudioMusic.time;
         yield return null;
         StartCoroutine(GetVolume());
     }
@@ -232,7 +236,6 @@ public class ObjectsMusic : MonoBehaviour
     {
 
         yield return new WaitForSeconds(1f);
-        StartCoroutine(GetVolume());
         starTime = true;
         AudioScript.Play();
         StartMusicTime--;
@@ -241,17 +244,23 @@ public class ObjectsMusic : MonoBehaviour
         {
             AudioMusic.Play();
             StarMusicText.enabled = !StarMusicText.enabled;
-        }else
+
+
+        }
+        else
             StartCoroutine(IniciarMusica());
+        StartCoroutine(GetVolume());
     }
 
 
     void Update()
     {
-        if(AudioMusic.time >= 122f)
-        {
-            SceneManager.LoadScene("Menu1");
-        }
+
+
+        //if (AudioMusic.time >= 122f)
+        //{
+        //    SceneManager.LoadScene("Menu1");
+        //}
 
         if (InstaciarObjeto && Input.GetKey(KeyCode.I))
         {
@@ -386,15 +395,6 @@ public class ObjectsMusic : MonoBehaviour
         }
         else
         {
-            //if (Rnd == 0)
-            //    Obstaculo = Instantiate(Destruir, new Vector3(-10, 3, transform.position.z + DistanciaObject2), rotação);
-
-            //if (Rnd == 1)
-            //    Obstaculo = Instantiate(Destruir, new Vector3(-5, 3, transform.position.z + DistanciaObject2), rotação);
-
-            //if (Rnd == 2)
-            //    Obstaculo = Instantiate(Destruir, new Vector3(0, 3, transform.position.z + DistanciaObject2), rotação);
-
             if (Rnd == 0)
                 Obstaculo = Instantiate(Parede, new Vector3(-10, transform.position.y, transform.position.z + DistanciaObject2), transform.rotation);
 

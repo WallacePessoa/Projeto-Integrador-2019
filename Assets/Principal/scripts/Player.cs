@@ -23,7 +23,8 @@ public class Player : MonoBehaviour
     public float Jump;
     public float speed;
     public Text Score;
-    public Text Text;
+    public Text TextDead;
+    public Text TextWin;
     public Image[] vida;
     public Image Fade;
     public InputField Nome;
@@ -93,6 +94,11 @@ public class Player : MonoBehaviour
         }
 
         PosicaoVertcalAlvo = new Vector3(LaneAtual, 0, 0);
+
+        if(ObjectsMusic.timeAudio >= 122f)
+        {
+            StartCoroutine(FadeWin());
+        }
     }
 
     private IEnumerator OnTriggerEnter(Collider other)
@@ -127,17 +133,15 @@ public class Player : MonoBehaviour
             score += 1;
             Score.text = score.ToString();
             Destroy(other.gameObject);
-            if (!AnimTextScore.enabled)
+
+            if(Score.fontSize == 25)
             {
-                AnimTextScore.enabled = !AnimTextScore.enabled;
- 
-                yield return new WaitForSeconds(0.3f);
-
-                AnimTextScore.enabled = !AnimTextScore.enabled;
-
-                Rect.localScale.Set(1, 1, 1);
-
+                Score.fontSize = 40;
+                yield return new WaitForSeconds(0.05f);
+                Score.fontSize = 25;
             }
+
+
         }
     }
 
@@ -146,7 +150,14 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Nome.gameObject.SetActive(true);
         Salvar.gameObject.SetActive(true);
-        Text.gameObject.SetActive(true);
+        TextDead.gameObject.SetActive(true);
+    }
+    public IEnumerator FadeWin()
+    {
+        yield return new WaitForSeconds(2f);
+        Nome.gameObject.SetActive(true);
+        Salvar.gameObject.SetActive(true);
+        TextWin.gameObject.SetActive(true);
     }
 
     public void Gravar()
