@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
     public Rank rank;
     public Running running;
 
+    public AudioSource audioMoeda;
+
 
     int score = 0;
     int Life = 3;
@@ -132,6 +134,7 @@ public class Player : MonoBehaviour
             Rect.localScale.Set(1, 1, 1);
             score += 1;
             Score.text = score.ToString();
+            audioMoeda.Play();
             Destroy(other.gameObject);
 
             if(Score.fontSize == 25)
