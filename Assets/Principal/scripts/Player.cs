@@ -9,13 +9,14 @@ public class Player : MonoBehaviour
     Rigidbody rb;
     AudioSource Audio;
     Animator AnimTextScore;
+    public Animator Animator;
 
     Vector3 PosicaoVertcalAlvo;
     Vector3 posicaoAlvo;
 
     RectTransform Rect;
 
-    bool atv = true;
+    bool atv = false;
 
     int LaneAtual = -5;
     int LaneAlvo = -5;
@@ -37,7 +38,7 @@ public class Player : MonoBehaviour
 
 
     int score = 0;
-    int Life = 3;
+    public static int Life = 3;
 
     List<string> Nomes = new List<string>();
 
@@ -52,6 +53,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         Audio = GetComponent<AudioSource>();
+
         AnimTextScore = Score.GetComponent<Animator>();
         AnimTextScore.enabled = !AnimTextScore.enabled;
 
@@ -67,15 +69,33 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
-            atv = true;
             MudarLane(true);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            atv = true;
             MudarLane(false);
         }
+        if (Input.GetKey(KeyCode.S))
+        {
+            Animator.SetBool("Slide", true);
+        }else
+            Animator.SetBool("Slide", false);
+
+        if (Input.GetKeyDown(KeyCode.W)&& atv == false)
+        {
+            atv = true;
+            Animator.SetBool("Jump", true);
+            rb.AddForce(transform.up * Jump);
+            yield return new WaitForSeconds(1f);
+            atv = false;
+        }
+        else
+        {
+            Animator.SetBool("Jump", false);
+
+        }
+
 
 
         yield return null;
@@ -88,12 +108,6 @@ public class Player : MonoBehaviour
     {
         posicaoAlvo = new Vector3(PosicaoVertcalAlvo.x, transform.position.y, transform.position.z);
         transform.position = posicaoAlvo;
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.AddForce(transform.up* Jump);
-           
-        }
 
         PosicaoVertcalAlvo = new Vector3(LaneAtual, 0, 0);
 
@@ -122,9 +136,11 @@ public class Player : MonoBehaviour
 
             if (Life == 0)
             {
+                Animator.SetBool("Dead", true);
                 StartCoroutine(FadeDead());
                 Fade.gameObject.SetActive(true);
                 running.Velocity = 0;
+
             }
 
         }

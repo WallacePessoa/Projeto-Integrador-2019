@@ -15,13 +15,17 @@ public class Post : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for(int x=0;x< ObjectsMusic.DbValue.Length; x++)
+        if (Player.Life != 0)
         {
-            Camera.main.GetComponent<PostProcessVolume>().profile.TryGetSettings(out ChromaticAberration ca);
-            print(ObjectsMusic.DbValue[x]);
-            ca.intensity.value = Mathf.Abs(ObjectsMusic.DbValue[x]) / 10;
-        }
+            for (int x = 0; x < ObjectsMusic.DbValue.Length; x++)
+            {
 
+                Camera.main.GetComponent<PostProcessVolume>().profile.TryGetSettings(out ChromaticAberration ca);
+                print(ObjectsMusic.DbValue[x] / 10);
+                ca.intensity.value = Mathf.Abs(ObjectsMusic.DbValue[x]) / 10;
+            }
+        }else
+            ca.intensity.value = 0f;
 
     }
 
