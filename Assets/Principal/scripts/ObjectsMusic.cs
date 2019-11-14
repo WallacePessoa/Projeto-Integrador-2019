@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class ObjectsMusic : MonoBehaviour
 {
 
-    public GameObject Parede;
+    public GameObject ParedeDupla;
+    public GameObject ParedeUpDown;
     public GameObject Destruir;
     public GameObject Coletavel;
     //public GameObject Inimigo;
@@ -39,6 +40,7 @@ public class ObjectsMusic : MonoBehaviour
     int aux = 0;
     int Rnd;
     int Rnd2;
+    int Rnd3;
     public static float timeAudio;
 
     public static float[] DbValue;
@@ -377,6 +379,7 @@ public class ObjectsMusic : MonoBehaviour
 
     public void InstParede()
     {
+        Rnd3 = Random.Range(0, 2);
         Rnd2 = Random.Range(0, 2);
         Rnd = Random.Range(0, 3);
 
@@ -385,24 +388,43 @@ public class ObjectsMusic : MonoBehaviour
         {
 
             if (Rnd == 0)
-                Obstaculo = Instantiate(Parede, new Vector3(-10, transform.position.y, transform.position.z + DistanciaObject2), transform.rotation);
+                Obstaculo = Instantiate(ParedeDupla, new Vector3(-10, 1, transform.position.z + DistanciaObject2), transform.rotation);
 
             if (Rnd == 1)
-                Obstaculo = Instantiate(Parede, new Vector3(-5, transform.position.y, transform.position.z + DistanciaObject2), transform.rotation);
+                Obstaculo = Instantiate(ParedeDupla, new Vector3(-5, 1, transform.position.z + DistanciaObject2), transform.rotation);
 
             if (Rnd == 2)
-                Obstaculo = Instantiate(Parede, new Vector3(0, transform.position.y, transform.position.z + DistanciaObject2), transform.rotation);
+                Obstaculo = Instantiate(ParedeDupla, new Vector3(0, 1, transform.position.z + DistanciaObject2), transform.rotation);
         }
         else
         {
             if (Rnd == 0)
-                Obstaculo = Instantiate(Parede, new Vector3(-10, transform.position.y, transform.position.z + DistanciaObject2), transform.rotation);
+            {
+                if(Rnd3 == 0)
+                    Obstaculo = Instantiate(ParedeUpDown, new Vector3(-10, 0.5f, transform.position.z + DistanciaObject2), transform.rotation);
+                else
+                    Obstaculo = Instantiate(ParedeUpDown, new Vector3(-10, 3, transform.position.z + DistanciaObject2), transform.rotation);
+
+
+            }
 
             if (Rnd == 1)
-                Obstaculo = Instantiate(Parede, new Vector3(-5, transform.position.y, transform.position.z + DistanciaObject2), transform.rotation);
+            {
+                if (Rnd3 == 0)
+                    Obstaculo = Instantiate(ParedeUpDown, new Vector3(-5, 0.5f, transform.position.z + DistanciaObject2), transform.rotation);
+                else
+                    Obstaculo = Instantiate(ParedeUpDown, new Vector3(-5, 3, transform.position.z + DistanciaObject2), transform.rotation);
+
+            }
 
             if (Rnd == 2)
-                Obstaculo = Instantiate(Parede, new Vector3(0, transform.position.y, transform.position.z + DistanciaObject2), transform.rotation);
+            {
+                if (Rnd3 == 0)
+                    Obstaculo = Instantiate(ParedeUpDown, new Vector3(0, 0.5f, transform.position.z + DistanciaObject2), transform.rotation);
+                else
+                    Obstaculo = Instantiate(ParedeUpDown, new Vector3(0, 3, transform.position.z + DistanciaObject2), transform.rotation);
+
+            }
         }
 
 

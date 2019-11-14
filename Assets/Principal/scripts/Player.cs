@@ -67,33 +67,38 @@ public class Player : MonoBehaviour
     public IEnumerator Muv()
     {
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             MudarLane(true);
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             MudarLane(false);
         }
-        if (Input.GetKey(KeyCode.S))
-        {
-            Animator.SetBool("Slide", true);
-        }else
-            Animator.SetBool("Slide", false);
-
-        if (Input.GetKeyDown(KeyCode.W)&& atv == false)
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) && atv == false)
         {
             atv = true;
-            Animator.SetBool("Jump", true);
-            rb.AddForce(transform.up * Jump);
+            Animator.SetBool("Slide", true);
             yield return new WaitForSeconds(1f);
             atv = false;
         }
         else
         {
-            Animator.SetBool("Jump", false);
+            Animator.SetBool("Slide", false);
+        }
 
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && atv == false)
+        {
+            atv = true;
+            Animator.SetBool("Jump", true);
+            rb.AddForce(transform.up * Jump);
+            yield return new WaitForSeconds(0.3f);
+            atv = false;
+        }
+        else
+        {
+            Animator.SetBool("Jump", false);
         }
 
 
@@ -111,12 +116,12 @@ public class Player : MonoBehaviour
 
         PosicaoVertcalAlvo = new Vector3(LaneAtual, 0, 0);
 
-        if(ObjectsMusic.timeAudio >= 122f)
-        {
-            StartCoroutine(FadeWin());
-        }
+        //if(ObjectsMusic.timeAudio >= 122f)
+        //{
+        //    StartCoroutine(FadeWin());
+        //}
     }
-
+    /*
     private IEnumerator OnTriggerEnter(Collider other)
     {
 
@@ -185,7 +190,7 @@ public class Player : MonoBehaviour
         rank.AddRank(score);
         SceneManager.LoadScene("Menu1");
     }
-
+    */
 
     void MudarLane(bool Lane)
     {
