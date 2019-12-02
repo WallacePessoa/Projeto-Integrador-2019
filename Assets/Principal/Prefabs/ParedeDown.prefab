@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1863949586227724903}
   - component: {fileID: 434687796951012547}
   m_Layer: 9
-  m_Name: ParedeUpDown
+  m_Name: ParedeDown
   m_TagString: Parede
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 2
-  m_Color: {r: 0, g: 0.0575552, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 100
   m_Range: 7
   m_SpotAngle: 30
@@ -223,7 +223,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 2
-  m_Color: {r: 0, g: 0.0575552, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 100
   m_Range: 7
   m_SpotAngle: 30
@@ -333,7 +333,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a7e187135775f584db7ce6da09662eab, type: 2}
+  - {fileID: 2100000, guid: 6dbd02ef9056f4d44bd9e336178572c8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

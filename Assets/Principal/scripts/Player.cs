@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
         {
             atv = true;
             Animator.SetBool("Slide", true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             atv = false;
         }
         else

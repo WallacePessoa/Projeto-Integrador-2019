@@ -15,8 +15,11 @@ public class TextRank : MonoBehaviour
         Text = GetComponent<Text>();
         //Text.text = rank.Chamar();
 
+
+
         for(int x = 0; x < rank.Ranking.Count; x++)
         {
+            Events.postJogador(x + 1, rank.Nomes[x], rank.Ranking[x]);
             Text.text =Text.text + (x+1) + "  " + "Nome: "+ rank.Chamar(x);
         }
     }

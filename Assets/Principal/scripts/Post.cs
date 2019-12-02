@@ -21,9 +21,14 @@ public class Post : MonoBehaviour
         {
             for (int x = 0; x < ObjectsMusic.DbValue.Length; x++)
             {
-
                 print(ObjectsMusic.DbValue[x] / 10);
-                ca.intensity.value = Mathf.Abs(ObjectsMusic.DbValue[x]) / 10;
+
+                if (ObjectsMusic.DbValue[x] > -15)
+                {
+                    ca.intensity.value = Mathf.Abs(ObjectsMusic.DbValue[x]) / 10;
+
+                }
+
             }
         }else
             ca.intensity.value = 0f;

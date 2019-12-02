@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 429698271}
-  Jump: 300
+  Jump: 200
   speed: 0.5
   Score: {fileID: 339577342}
   TextDead: {fileID: 1619305259}
@@ -337,7 +337,7 @@ MonoBehaviour:
   Fade: {fileID: 995538897}
   Nome: {fileID: 546798909}
   Salvar: {fileID: 706677450}
-  rank: {fileID: 0}
+  rank: {fileID: 11400000, guid: d79edd12de552df409749eb011570fc8, type: 2}
   running: {fileID: 1319717742}
   audioMoeda: {fileID: 1198266225}
 --- !u!82 &36296162
@@ -451,7 +451,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ParedeDupla: {fileID: 8889818809518157229, guid: 9d8d4260f23488d499acba1566f43b7a,
     type: 3}
-  ParedeUpDown: {fileID: 673733022390832326, guid: b7f0f181378922645ae949de3daf8802,
+  ParedeDown: {fileID: 673733022390832326, guid: b7f0f181378922645ae949de3daf8802,
+    type: 3}
+  ParedeUp: {fileID: 6775080682735897019, guid: a10e096ec40032945a905b6dfd293059,
     type: 3}
   Destruir: {fileID: 0}
   Coletavel: {fileID: 1198266221}
@@ -923,7 +925,7 @@ BoxCollider:
   m_GameObject: {fileID: 207612942}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1144,7 +1146,7 @@ BoxCollider:
   m_GameObject: {fileID: 249727391}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2372,7 +2374,7 @@ BoxCollider:
   m_GameObject: {fileID: 681479130}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2552,7 +2554,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 6e-45, y: 6.2e-44, z: 1.1754945e-38, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -2686,7 +2688,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36296161}
+      - m_Target: {fileID: 1097893187}
         m_MethodName: Gravar
         m_Mode: 1
         m_Arguments:
@@ -3248,7 +3250,7 @@ BoxCollider:
   m_GameObject: {fileID: 1054850732}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -3980,7 +3982,7 @@ BoxCollider:
   m_GameObject: {fileID: 1477580269}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -4792,7 +4794,7 @@ BoxCollider:
   m_GameObject: {fileID: 1710181072}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -5147,7 +5149,7 @@ BoxCollider:
   m_GameObject: {fileID: 1838205897}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -5256,7 +5258,7 @@ BoxCollider:
   m_GameObject: {fileID: 1915133202}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

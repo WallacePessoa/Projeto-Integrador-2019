@@ -209,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8889818808584014487}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: 0, z: 0}
+  m_LocalPosition: {x: 6.5, y: 1, z: 0}
   m_LocalScale: {x: 9.898001, y: 1.2558576, z: 1}
   m_Children:
   - {fileID: 1713233819873739733}
@@ -302,7 +302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8889818809114079560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6, y: 0, z: 0}
+  m_LocalPosition: {x: -6.5, y: 1, z: 0}
   m_LocalScale: {x: 9.898001, y: 1.2558569, z: 1}
   m_Children:
   - {fileID: 8782083750198517589}
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 8374872338014695149}
   - component: {fileID: 7771378712770192140}
   m_Layer: 9
-  m_Name: Parede
+  m_Name: ParedeDupla
   m_TagString: Parede
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -396,7 +396,7 @@ Transform:
   m_GameObject: {fileID: 8889818809518157229}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3388, y: 1, z: 1}
+  m_LocalScale: {x: 1.0429654, y: 1.9698254, z: 1}
   m_Children:
   - {fileID: 8889818809114079564}
   - {fileID: 8889818808584014484}
